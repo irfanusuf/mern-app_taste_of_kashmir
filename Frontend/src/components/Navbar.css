@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  background-color: beige;
+
+}
+
+
+.unordered-list ul{
+
+    display: flex;
+    list-style-type: none;
+
+
+}
+
+
+.unordered-list ul li {
+
+   margin-left: 20px;
+   
+   
+}
+
+
+.unordered-list ul li a {
+
+  text-decoration: none;
+  color: black;
+  
+  
+}

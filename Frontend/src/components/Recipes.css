@@ -1,0 +1,54 @@
+.main-container {
+    width: 50%;
+    margin: auto;  
+  }
+  
+  
+  .main-container input{
+     margin-left: 10px ; 
+     box-shadow: 2px 2px 10px rgb(136, 136, 209);
+     width: 200px;
+     border-radius: 5px;
+     padding: 5px 10px;
+    }
+  
+    
+  .main-container label{
+  
+      font-size: larger;
+      margin-top: 50px;
+  }
+     
+   
+  
+  
+  .container h2 {
+   color: chocolate;
+  }
+  
+  .container img {
+  
+      border-radius: 10px;
+  }
+  
+  .container p {
+      font-weight: 400;
+     
+  }
+  
+  .container li {
+  
+      margin-left: 10px ;
+  }
+
+
+  .spinner {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 200px;
+color: red;
+font-size: larger;
+font-weight: 600;
+
+  }
