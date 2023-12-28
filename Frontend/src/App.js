@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 import Recipes from './components/Recipes';
+import Login from './components/Login'
 const App = () => {
   return (
     <div className='app-div'>
@@ -20,8 +21,9 @@ const App = () => {
 
 
           <Route path='/' element={<Home />} ></Route>
-          <Route path='/signup' element={<Signup />} ></Route>
+          <Route path='/signup' element={<Signup/>} ></Route>
           <Route path='/recipes' element = {<Recipes/>} ></Route>
+          <Route path='/login' element = {<Login/>} ></Route>
 
 
         </Routes>

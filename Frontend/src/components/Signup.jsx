@@ -3,6 +3,9 @@ import './Signup.css';
 import axios from 'axios';
 
 const Signup = () => {
+
+
+  
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -29,7 +32,7 @@ const Signup = () => {
         setMessage('User created successfully');
       } else if (response.data.message === "User already exists") {
         setMessage('User with this email already exists');
-      } else if (response.data.message === 'Invalid input') {
+      } else if (response.data.message === '') {
         setMessage('Invalid input. Please provide all fields.');
       } else {
         setMessage('Error creating user');

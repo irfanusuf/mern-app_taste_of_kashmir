@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')   // used to take data from body in th
 const mongoose = require('mongoose');       // library for connecting with mongo db database
 const handleRegister =require('./controllers/Register');
 const fetchRecipeData =require('./controllers/fetchRecipeData')
-const handleLogin = require ('./controllers/Login2')
+const handleLogin = require ('./controllers/Login')
 require('dotenv').config();
 const app = express();                       //intiating express app 
 const port = process.env.PORT || 5000;       //defining port 
