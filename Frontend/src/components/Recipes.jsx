@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Recipes.css'
+import useAuth from '../auth/auth';
+import Image from '../assets/onion.png'
 
 function Recipes() {
+
+  useAuth();  // custom hook
+
+
+
   const [recipeData, setRecipeData] = useState([]);
-  const [category, setCategory] = useState('');
-   const [error, setError] = useState("");
+  const [category, setCategory] = useState('chicken');
+  const [error, setError] = useState("");
+
+   const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
+
+
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -22,35 +36,37 @@ function Recipes() {
   }, [category]);
 
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-
-
-
  
+
+
+
+
+  
 
   return (
 
 
-<>
-<div className='main-container'> 
+
+<div className= {error ? "display-port" :  "display-port-2"} > 
 
 
-<label>
-  Category:
 
-  </label>
-      <input type="text" value={category} onChange={handleCategoryChange} />
+      <div className='recipe-container'>
 
-{error ? <div className='spinner'>laoding ..... </div> :
+      <div  className='heading'>
+              <label>Category: </label>
+                <input type="text" value={category} onChange={handleCategoryChange} />
+     </div>
 
-<div>
+
+{error ? <div > <img className='spinner' src= {Image} alt='no' width={200}/> </div> :
+
+<div className='container'>
+  
 
 {recipeData.map((recipe, recipeIndex) => (
  
- <div key={recipeIndex} className='container'>
+ <div key={recipeIndex} >
 
    <h1>{recipe.Title}</h1>
 
@@ -72,15 +88,9 @@ function Recipes() {
  </div>
 ))}
 </div>}
-
 </div>
+</div> 
 
-
-
-
-</>
-    
-   
   );
 }
 

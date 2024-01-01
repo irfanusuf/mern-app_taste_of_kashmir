@@ -1,13 +1,28 @@
 import React from 'react'
+import './Home.css'
 
 const Home = () => {
   return (
-    <div>Home
+    <div>
+
+
+      <div className='main-section'>
+        <div className='main-left'>
+
+        </div>
+
+
+        <div className='main-right'>
+
+        </div>
+
+
+
+      </div>
 
 
 
 
-      <h1> this is home page </h1>
     </div>
   )
 }

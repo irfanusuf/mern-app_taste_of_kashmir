@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');    
+const mongoose = require('mongoose');   //importing mongose which is a library to connect with mongo db and create schema 
 
 
 // mongoose schema for user 

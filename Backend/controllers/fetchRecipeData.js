@@ -1,5 +1,5 @@
 
-
+// const axios = require('axios');  
 // server side api call to third party server of rapid api (food recipe)
 const fetchRecipe = async (params) => {
   try {
@@ -27,7 +27,7 @@ const fetchRecipeData = async (req, res) => {
   try {
     const params = req.query.q;
     if (!params) {
-      res.status(500).json({ meow: 'no query' })
+      res.status(500).json({ message: 'no query' })
     }
     else {
       const recipeData = await fetchRecipe(params);

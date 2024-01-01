@@ -1,54 +1,90 @@
-.main-container {
-    width: 50%;
-    margin: auto;  
-  }
-  
-  
-  .main-container input{
-     margin-left: 10px ; 
-     box-shadow: 2px 2px 10px rgb(136, 136, 209);
-     width: 200px;
-     border-radius: 5px;
-     padding: 5px 10px;
-    }
-  
+.display-port {
+
+    height: 150vh;
+    background-image: url(../assets/food\ \(4\).jpg);
+    background-size: cover;
     
-  .main-container label{
-  
-      font-size: larger;
-      margin-top: 50px;
-  }
-     
    
-  
-  
-  .container h2 {
-   color: chocolate;
-  }
-  
-  .container img {
-  
-      border-radius: 10px;
-  }
-  
-  .container p {
-      font-weight: 400;
-     
-  }
-  
-  .container li {
-  
-      margin-left: 10px ;
-  }
+}
+
+.display-port-2{
+
+    background-image: url(../assets/food\ \(4\).jpg);
+    background-attachment: fixed;
+    background-size: cover;
+   
+}
 
 
-  .spinner {
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 200px;
-color: red;
-font-size: larger;
-font-weight: 600;
 
+
+
+
+
+.heading label {
+
+    font-size: larger;
+    margin: 0;
+    padding-top: 50px;
+}
+
+.heading input {
+   
+    box-shadow: 2px 2px 10px rgb(74, 74, 75);
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 10px;
+
+}
+
+
+.recipe-container{
+    
+
+    width: 50%;
+    margin: auto;
+    opacity: 1;
+}
+
+
+.container h2 {
+    color: chocolate;
+}
+
+.container img {
+
+    border-radius: 10px;
+}
+
+.container p {
+    font-weight: 400;
+
+}
+
+.container li {
+
+    margin-left: 10px;
+}
+
+
+.spinner {
+    display: flex;
+    margin-top: 215px;
+    margin-left: 395px;
+    animation: rotate infinite linear 3s;
+   
+
+
+}
+
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
+
