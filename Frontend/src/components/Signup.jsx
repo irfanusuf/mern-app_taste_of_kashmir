@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
 
-
+const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -30,6 +31,9 @@ const Signup = () => {
       console.log(response.data.message)
       if (response.status === 201) {
         setMessage('User created successfully');
+        navigate ( '/login')
+
+
       } else if (response.data.message === "User already exists") {
         setMessage('User with this email already exists');
       } else if (response.data.message === 'All credentials required') {

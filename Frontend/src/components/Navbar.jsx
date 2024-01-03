@@ -6,7 +6,17 @@ import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
     const navigate = useNavigate();
     const [message, setMessage] = useState("")
+
+
+
+
+
     const isLoggedIn = localStorage.getItem('token');
+
+
+
+
+    
     const handleLogout = async () => {
         localStorage.removeItem('token');
         setMessage(" You have been logged Out Succesfully! ")

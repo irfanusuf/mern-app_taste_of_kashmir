@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Recipes from './components/Recipes';
 import Login from './components/Login'
 import Footer from './components/Footer';
+import PostRecipeForm from './components/PostRecipe';
 
 const App = () => {
  
@@ -20,6 +21,8 @@ const App = () => {
           <Route path='/signup' element={<Signup/>} ></Route>
           <Route path='/recipes' element = {<Recipes/>} ></Route>
           <Route path='/login' element = {<Login/>} ></Route>
+          <Route path='/postRecipe' element = {<PostRecipeForm/>} ></Route>
+
         </Routes>
 
         <Footer/>
