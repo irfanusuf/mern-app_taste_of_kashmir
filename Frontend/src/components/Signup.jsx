@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Signup.css';
+import '../styles/Forms.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,14 +50,14 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className='Signup-page'>
+    <div className='signup-page'>
 
       <div className='heading'>
         <h1> Register </h1>
       </div>
 
-      <div className='signup-container'>
-        <form onSubmit={handleSubmit} className='signup-form'>
+      <div className='container'>
+        <form onSubmit={handleSubmit} className='form'>
           <label>
             Username:  </label>
           <input
@@ -96,7 +96,7 @@ const navigate = useNavigate();
         </form>
       </div>
 
-      <div className='Disclaimer'>
+      <div className='disclaimer'>
         <p style={{ fontSize: 20 }}><strong> Disclaimer: </strong></p>
         <p>By registering in our app, you acknowledge and agree that we will collect and securely store your provided information for authentication and personalized user experience. Rest assured, your privacy is our priority, and we are committed to safeguarding your data in compliance with our privacy policy.</p>
 

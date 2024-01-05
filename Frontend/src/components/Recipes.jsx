@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Recipes.css'
+import '../styles/Recipes.scss'
 import useAuth from '../auth/auth';
 import Image from '../assets/onion.png'
 

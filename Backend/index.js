@@ -4,7 +4,8 @@ const cors = require('cors');               // cross origin resuorce sharing
 const bodyParser = require('body-parser')   // used to take data from body in the form of json
 const mongoose = require('mongoose');       // library for connecting with mongo db database
 const multer = require('multer');            // multer manger file upload system 
-const upload = multer({ dest: 'uploads/'  ,  limits: {
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage , dest: 'uploads/'  ,  limits: {
   fieldSize: 1024 * 1024 * 10, 
 }, }); 
 
@@ -47,7 +48,7 @@ if(mongoose.connect(url))
 app.post('/api/signup', handleRegister);
 app.post('/api/login', handleLogin);
 app.get('/api/fetch/recipes', fetchRecipeData);
-app.post('/api/post/recipe', upload.single('file'), PostRecipeData);
+app.post('/api/post/recipe', upload.single('image'), PostRecipeData);
 
 
 // starting a server which starts to listen on port defined in env 

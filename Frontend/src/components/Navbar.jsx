@@ -1,22 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
+import '../styles/Navbar.scss'
 import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [message, setMessage] = useState("")
-
-
-
-
-
     const isLoggedIn = localStorage.getItem('token');
 
 
-
-
-    
     const handleLogout = async () => {
         localStorage.removeItem('token');
         setMessage(" You have been logged Out Succesfully! ")
@@ -26,27 +18,28 @@ const Navbar = () => {
 
 
     return (
-        <div className='navbar'>
+        <div className='navbar background'>
 
             <div className='left-nav'>
-                <ul>
-                    <li> <Link to='/'> Home </Link> </li>
-                    <li> <Link to='/recipes'> Recipes </Link> </li>
-                    <li> <Link to='/signup'> Register </Link> </li>
-                    <li> <Link to='/login'> Login </Link> </li>
-                </ul>
+
+            <Link to='/'  className='brand-name' > Zaik-e-Kashmir </Link>
+               
+            </div>
+
+            <div className='centre-nav'>
+                {isLoggedIn && (<Link to='/post/Recipe' > Post your Recipe </Link>)}
+                {isLoggedIn && (<Link to='/fetch/Recipe' > Your Recipes </Link>)}
+
             </div>
 
 
+
+
             <div className='right-nav'>
-
-
                 <p>{message && `${message}`}</p>
-
-
                 {isLoggedIn && (
                     <button onClick={handleLogout} >
-                       Logout
+                        Logout
                     </button>
                 )}
             </div>

@@ -14,11 +14,11 @@ const PostRecipeData = async (req, res) => {
     const { title, ingredients, instructions} = req.body;
 //    const filePath = ''
 
-const file = req.file;
+const image = req.body.image;
     try {
         if (title !== "" && ingredients !== "" && instructions !== "") {
            
-                const upload = await cloudinary.v2.uploader.upload(file.path, {
+                const upload = await cloudinary.v2.uploader.upload(image, {
                     folder: "recipe-pics",
                 });
     

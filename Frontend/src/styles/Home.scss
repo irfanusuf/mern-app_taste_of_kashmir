@@ -1,0 +1,59 @@
+.main-section {
+    display: flex;
+    background-image: url(../assets/landingPageBg.jpg);
+    background-size: cover;
+    height: 150vh;
+    
+}
+
+.section-right {
+
+    margin-left: 750px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+
+    >h1 {
+        color: aliceblue;
+        margin: 0;
+        font-size: 60px;
+    }
+
+    >p {
+        color: aliceblue;
+        font-size: 28px;
+        margin: 0;
+    }
+   
+}
+
+
+.explore-buttons {
+
+margin-top: 20px;
+
+
+    >a {
+        color: antiquewhite;
+        text-decoration: none;
+        border: 1px solid white;
+        border-radius: 5px;
+        background: transparent;
+        padding: 8px 20px;
+        font-size: 18px;
+        margin-left: 5px;
+
+        &:hover {
+            background-color: antiquewhite;
+            color: black;
+        }
+    
+    }
+
+    
+}
+
+
+
+
+

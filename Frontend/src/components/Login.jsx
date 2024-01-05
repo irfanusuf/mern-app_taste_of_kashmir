@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Signup.css';
+import '../styles/Forms.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -66,7 +66,7 @@ const Login = () => {
     };
 
     return (
-        <div className='Login-page'>
+        <div className='login-page'>
 
 
 
@@ -75,8 +75,8 @@ const Login = () => {
                 <h1> Login </h1>
             </div>
 
-            <div className='signup-container'>
-                <form onSubmit={handleSubmit} className='signup-form'>
+            <div className='container'>
+                <form onSubmit={handleSubmit} className='form'>
 
                     <label> Email: </label>
 
@@ -104,7 +104,7 @@ const Login = () => {
                 </form>
             </div>
 
-            <div className='Disclaimer'>
+            <div className='disclaimer'>
                 <p style={{fontSize:20}}><strong> Disclaimer: </strong></p>
                 <p>By logging into this app, you agree to abide by our terms of service and acknowledge that the app collects and securely stores your login information for authentication purposes only. Your privacy and data security are our top priorities.</p>
 
