@@ -1,0 +1,42 @@
+.fetch-recipe {
+    background-image: url(../assets/navbarBg.jpg);
+    background-size: cover;
+    height: 150vh;
+}
+
+.recipe-card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipe-card {
+    margin-top: 280px;
+    margin-left: 70px;
+    width: 300px;
+    height: 320px;
+    border: 1px solid green;
+    border-radius: 5px;
+    box-shadow: 2px 0px 5px rgb(114, 158, 102);
+
+
+    >img {
+        width: 100%;
+
+    }
+
+     > h2 {
+        margin: 0;
+    }
+
+    >span {
+        font-weight: 700;
+    }
+
+    > p {
+        margin: 0;
+        font-weight: 700;
+    }
+    p{
+        margin: 0;
+    }
+}

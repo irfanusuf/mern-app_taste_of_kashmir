@@ -20,11 +20,8 @@ const PostRecipeForm = () => {
 
   const handleFile = (e) => {
     const file = e.target.files[0];
-
-
     const Reader = new FileReader();   //  creating instance of fileReader   // inheritance 
     Reader.readAsDataURL(file);
-
     Reader.onload = () => {
       if (Reader.readyState === 2) {
         setImage(Reader.result);
@@ -43,25 +40,33 @@ const PostRecipeForm = () => {
       setLoading(true);
 
       const formDataArr = new FormData();    //creating instance of FormData
-
-
       formDataArr.append('title', title);
       formDataArr.append('ingredients', ingredients);
       formDataArr.append('instructions', instructions);
       formDataArr.append('image', image);
 
+      const token = localStorage.getItem('token');
 
-      const response = await axios.post('http://localhost:4000/api/post/recipe', formDataArr);
+
+
+
+      const response = await axios.post('http://localhost:4000/api/post/recipe', formDataArr,
+
+        { headers: { 'Authorization': `${token}` } }
+
+      );
 
       if (response.data.message === 'Recipe Created') {
         setMessage(response.data.message);
+        
 
       } else {
         setMessage(response.data.message);
+        // setTimeout(() => setMessage(''), 6000);
       }
     } catch (error) {
       console.error(error);
-      setMessage('Internal Server Error');
+      setMessage('server error');
     } finally {
       setLoading(false);
     }

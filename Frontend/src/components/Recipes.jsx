@@ -24,7 +24,7 @@ function Recipes() {
     const fetchRecipes = async () => {
       try {
         setError("");
-        const response = await axios.get(`http://localhost:4000/api/recipes?q=${category}`)
+        const response = await axios.get(`http://localhost:4000/api/fetch/recipes?q=${category}`)
         setRecipeData(response.data.d);
       } catch (error) {
         console.error('Error fetching recipe data:', error);

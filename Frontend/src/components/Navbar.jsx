@@ -27,8 +27,8 @@ const Navbar = () => {
             </div>
 
             <div className='centre-nav'>
-                {isLoggedIn && (<Link to='/post/Recipe' > Post your Recipe </Link>)}
-                {isLoggedIn && (<Link to='/fetch/Recipe' > Your Recipes </Link>)}
+                {isLoggedIn && (<Link to='/post/user/Recipe' > Post your Recipe </Link>)}
+                {isLoggedIn && (<Link to='/fetch/user/Recipe' > Your Recipes </Link>)}
 
             </div>
 

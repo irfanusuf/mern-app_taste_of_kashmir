@@ -1,7 +1,7 @@
-const { fileLoader } = require('ejs');
 const Recipe = require('../models/RecipeModel');
 const cloudinary = require('cloudinary');
-// const User = require ('../models/UserModel')
+const User = require('../models/UserModel')
+
 
 
 cloudinary.config({
@@ -11,36 +11,41 @@ cloudinary.config({
 });
 
 const PostRecipeData = async (req, res) => {
-    const { title, ingredients, instructions} = req.body;
-//    const filePath = ''
 
-const image = req.body.image;
+   
+    const { title, ingredients, instructions } = req.body;
+    const image = req.body.image;
     try {
         if (title !== "" && ingredients !== "" && instructions !== "") {
+
+            const upload = await cloudinary.v2.uploader.upload(image, {
+                folder: "recipe-pics",
+            });
+
+            const newRecipe = new Recipe({
+                title,
+                ingredients,
+                instructions,
+                imageUrl: upload.secure_url,
+                author : req.userId
            
-                const upload = await cloudinary.v2.uploader.upload(image, {
-                    folder: "recipe-pics",
-                });
-    
-                const newRecipe = new Recipe({
-                    title,
-                    ingredients,
-                    instructions,
-                    imageUrl : upload.secure_url
-                       
-                });
-    
-                await newRecipe.save();
-                res.status(201).json({ message: "Recipe Created" });
-          
+// 
+
+            });
+
+            await newRecipe.save();
+
+
+            await User.findByIdAndUpdate(req.userId, { $push: { recipeList: newRecipe._id } });
+            res.status(201).json({ message: "Recipe Created" });
+
         } else {
             res.json({ message: "All Fields Required" });
         }
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "Internal Server Error" });
+        res.status(500).json({ message: error.message });
     }
-    
 };
 
 module.exports = PostRecipeData;
