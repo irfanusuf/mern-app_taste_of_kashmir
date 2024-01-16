@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import '../styles/Forms.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 const Login = () => {
-
     const navigate = useNavigate();
-
-
-    
-    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
     });
 
@@ -22,43 +19,24 @@ const Login = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-
-
-
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             setLoading(true);
             const response = await axios.post('http://localhost:4000/api/login', formData);
-
             if (response.data.message === 'Logged In Successfully') {
-                setMessage('Logged in Succesfully');
-                const { token } = response.data;
+            //    toast.success(response.data.message)
+                const { token , username} = response.data;
                 localStorage.setItem('token', token);
-                navigate('/recipes');
+                localStorage.setItem('username' , username)
+                navigate('/');
 
-            } else if (response.data.message === "Password Does Not Match") {
-                setMessage('Password Does Not Match');
-
-
-            } else if (response.data.message === 'User Not Found') {
-                setMessage('User Not Found');
-
-
-            } else if (response.data.message === 'All Credentials Required') {
-                setMessage('All credentials required ');
+            } else   {
+                toast.error(response.data.message)
             }
-
-
-
-
         } catch (error) {
             console.error(error);
-            setMessage(error);
+            toast.error("Server Error")
 
         } finally {
             setLoading(false);
@@ -67,40 +45,29 @@ const Login = () => {
 
     return (
         <div className='login-page'>
-
-
-
-
+         <ToastContainer position='top-center' />
             <div className='heading'>
                 <h1> Login </h1>
             </div>
-
             <div className='container'>
                 <form onSubmit={handleSubmit} className='form'>
-
-                    <label> Email: </label>
-
+                    <label> Username: </label>
                     <input
-                        type='email'
-                        name='email'   //key
-                        value={formData.email}    //value
+                        type='text'
+                        name='username'   //key
+                        value={formData.username}    //value
                         onChange={handleChange}
-
                     />
-
                     <label> Password:</label>
                     <input
                         type='password'
                         name='password'    //key
                         value={formData.password}    // value 
                         onChange={handleChange}
-
                     />
-
                     <button type='submit' disabled={loading}>
                         {loading ? 'Logging .....' : 'Login'}
                     </button>
-                    <div className='notification'> {message && `${message}`}</div>
                 </form>
             </div>
 

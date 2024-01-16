@@ -13,7 +13,8 @@ const fetchRecipeData =require('./controllers/fetchRecipeData')
 const handleLogin = require ('./controllers/Login')
 const PostRecipeData = require ( './controllers/postRecipeData')
 const authJwt = require ('./middlewares/Auth')
-const multMidWare = require('./middlewares/multer')
+const multMidWare = require('./middlewares/multer');
+const getLocalRecipes = require('./controllers/getLocalRecipe');
 
 
 // importing config for dotenv
@@ -25,7 +26,7 @@ const app = express();                       //intiating express app
 const port = process.env.PORT                //defining port 
 const url = process.env.MONGO_URL_DEV;       // declaring url
 
-app.use(cors());                             //  using cors middleware which enables cross origin resource sharing 
+app.use(cors());                             // using cors middleware which enables cross origin resource sharing 
 app.use(bodyParser.json());                  // using bodyparser which converts body data into json 
 
 
@@ -41,9 +42,8 @@ if(mongoose.connect(url))
 // defining routes and their handler functiions which are in seperate file systems
 app.post('/api/signup', handleRegister);
 app.post('/api/login', handleLogin);
-app.get('/api/fetch/recipes', fetchRecipeData);
-
-
+app.get('/rapid-api/fetch/recipes', fetchRecipeData);
+app.get('/api/fetch/recipes', getLocalRecipes);
 app.post('/api/post/recipe', multMidWare, authJwt,  PostRecipeData);
 
 

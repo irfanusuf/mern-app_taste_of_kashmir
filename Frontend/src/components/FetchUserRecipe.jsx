@@ -1,32 +1,56 @@
-import React from 'react'
-import '../styles/RecipeCard.scss'
+import React, { useEffect, useState } from 'react';
+import '../styles/RecipeCard.scss';
+import axios from 'axios';
 
 const FetchUserRecipe = () => {
+  const [recipes, setRecipes] = useState([]);
 
+  const fetchRecipes = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/api/fetch/recipes');
+      setRecipes(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+    }
+  };
 
-    const imageUrl = 'iiiuiuy'
-    const title = 'meow'
-    const ingredients = 'meow'
-    const instructions = 'ask waza'
-    return (
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
 
-        <div className='fetch-recipe'>
-            <div className='recipe-card-container'>
-                <div className='recipe-card'>
+  return (
+    <div className='fetch-recipe'>
 
-                <p>{title}</p>
-                    <img src={imageUrl} alt='text' />
-                    <h2>Title</h2>
-                  <div> <p>{title}</p></div>  
-                    <span>Ingredients</span>
-                   <div><p>{ingredients}</p> </div> 
-                    <p>Instructions </p>
-                   <div>  <p>{instructions}</p></div>
-                </div>
+<div className='heading'><h1> Great Recipes from Great Authors</h1> </div>
+      
+      <div className='recipe-card-container'>
+      
+        {recipes.map((recipe) => (
+          <div key={recipe._id} className='recipe-card'>
 
+            <h2>Title : {recipe.title}</h2>
+            <img src={recipe.imageUrl} alt='text' />
+
+            <br />
+            <span>Ingredients</span>
+            <div>
+              <p>{recipe.ingredients}</p>
             </div>
-        </div>
-    )
-}
+            <p>Instructions</p>
+            <div>
+              <p>{recipe.instructions}</p>
+            </div>
 
-export default FetchUserRecipe
+            <p>Author</p>
+            <div>
+              <p>{recipe.author.username}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FetchUserRecipe;
